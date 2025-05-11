@@ -16,16 +16,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AccountFragment extends Fragment {
 
@@ -50,7 +46,7 @@ public class AccountFragment extends Fragment {
         buttonSelectStartDate.setOnClickListener(v -> showDatePickerDialog(true));
         buttonSelectEndDate.setOnClickListener(v -> showDatePickerDialog(false));
 
-        buttonGetTransactions.setOnClickListener(v -> getTransactions());
+
 
         return view;
     }
@@ -93,52 +89,9 @@ public class AccountFragment extends Fragment {
         datePickerDialog.show();
     }
 
-    private void getTransactions() {
-        if (startDate.equals("Not selected") || endDate.equals("Not selected")) {
-            Toast.makeText(requireContext(), "Please select both start and end dates!", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        try {
-            Date start = sdf.parse(startDate);
-            Date end = sdf.parse(endDate);
-            String startString = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(start);
-            String endString = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(end);
 
-            fetchTransactions(userId, startString, endString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void fetchTransactions(Long userId, String startDate, String endDate) {
-        UserApiService apiService = ApiClient.getClient().create(UserApiService.class);
-        Call<List<Transaction>> call = apiService.getTransactionsByUserIdAndDates(userId, startDate, endDate);
 
-        call.enqueue(new Callback<List<Transaction>>() {
-            @Override
-            public void onResponse(Call<List<Transaction>> call, Response<List<Transaction>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    List<Transaction> transactions = response.body();
-                    displayTransactions(transactions);
-                } else {
-                    Toast.makeText(requireContext(), "Failed to fetch transactions!", Toast.LENGTH_SHORT).show();
-                }
-            }
 
-            @Override
-            public void onFailure(Call<List<Transaction>> call, Throwable t) {
-                Toast.makeText(requireContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void displayTransactions(List<Transaction> transactions) {
-        RecyclerView recyclerView = requireView().findViewById(R.id.recycler_view_transactions);
-        TransactionAdapter adapter = new TransactionAdapter(transactions);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        recyclerView.setVisibility(View.VISIBLE);
-    }
 }

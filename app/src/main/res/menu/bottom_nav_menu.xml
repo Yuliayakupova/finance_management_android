@@ -1,8 +1,8 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_account"
-        android:title="Account"
+        android:id="@+id/nav_transaction"
+        android:title="Transaction"
         android:icon="@drawable/person"
         tools:ignore="HardcodedText" />
     <item
@@ -18,6 +18,11 @@
     <item
         android:id="@+id/nav_piggy_bank"
         android:title="Savings"
+        android:icon="@drawable/savings"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/nav_limit"
+        android:title="Limits"
         android:icon="@drawable/savings"
         tools:ignore="HardcodedText" />
 </menu>

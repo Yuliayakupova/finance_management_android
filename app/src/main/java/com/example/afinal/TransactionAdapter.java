@@ -7,11 +7,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.afinal.boundedContext.transaction.dto.Transaction;
+
 import java.util.List;
 
-public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
+public class TransactionAdapter //extends
+        //RecyclerView.Adapter<TransactionAdapter.ViewHolder>
+{
 
-    private final List<Transaction> transactions;
+   /* private final List<Transaction> transactions;
 
     public TransactionAdapter(List<Transaction> transactions) {
         this.transactions = transactions;
@@ -52,5 +56,5 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             amountTextView = itemView.findViewById(R.id.text_transaction_amount);
             dateTextView = itemView.findViewById(R.id.text_transaction_date);
         }
-    }
+    }*/
 }

@@ -1,4 +1,4 @@
-package com.example.afinal;
+package com.example.afinal.boundedContext.dashboard;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -6,6 +6,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.example.afinal.AccountFragment;
+import com.example.afinal.BudgetFragment;
+import com.example.afinal.ChatFragment;
+import com.example.afinal.R;
+import com.example.afinal.SavingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,10 +32,12 @@ public class DashboardActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
 
         fragmentMap = new HashMap<>();
-        fragmentMap.put(R.id.nav_account, new AccountFragment());
         fragmentMap.put(R.id.nav_budget, new BudgetFragment());
+        //fragmentMap.put(R.id.nav_transaction, new TransactionFragment());
         fragmentMap.put(R.id.nav_chat, new ChatFragment());
         fragmentMap.put(R.id.nav_piggy_bank, new SavingsFragment());
+        //fragmentMap.put(R.id.nav_limit, new LimitFragment());
+
 
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = fragmentMap.get(item.getItemId());
