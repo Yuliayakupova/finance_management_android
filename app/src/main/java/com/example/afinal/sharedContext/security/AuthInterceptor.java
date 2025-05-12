@@ -4,6 +4,8 @@ package com.example.afinal.sharedContext.security;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.annotation.NonNull;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -17,6 +19,7 @@ public class AuthInterceptor implements Interceptor {
         this.sharedPreferences = context.getSharedPreferences("auth", Context.MODE_PRIVATE);
     }
 
+    @NonNull
     @Override
     public Response intercept(Chain chain) throws IOException {
         String token = sharedPreferences.getString("jwt", null);

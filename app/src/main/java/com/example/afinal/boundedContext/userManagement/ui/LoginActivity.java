@@ -1,4 +1,4 @@
-package com.example.afinal;
+package com.example.afinal.boundedContext.userManagement.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,10 +9,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.afinal.R;
 import com.example.afinal.boundedContext.authentication.api.AuthApiService;
 import com.example.afinal.boundedContext.authentication.request.LoginRequest;
 import com.example.afinal.boundedContext.authentication.ui.RegisterActivity;
-import com.example.afinal.boundedContext.dashboard.DashboardActivity;
+import com.example.afinal.boundedContext.budget.ui.DashboardActivity;
 import com.example.afinal.sharedContext.security.JwtResponse;
 import com.example.afinal.sharedContext.api.ApiClient;
 
@@ -20,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
     private Button buttonLogin, buttonGoToRegister;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(v -> loginUser());
 
         buttonGoToRegister.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
         });
     }
@@ -69,18 +70,18 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
                     prefs.edit().putString("jwt", jwt).apply();
 
-                    Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<JwtResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

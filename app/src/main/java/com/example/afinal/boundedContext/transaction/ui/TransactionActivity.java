@@ -22,10 +22,10 @@ import retrofit2.Response;
 
 public class TransactionActivity extends AppCompatActivity {
 
-   /* private EditText editTextAmount, editTextDescription, editTextCategory;
+    private EditText editTextAmount, editTextDescription, editTextCategory;
     private Button addButton, updateButton, deleteButton;
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
@@ -53,10 +53,13 @@ public class TransactionActivity extends AppCompatActivity {
             return;
         }
 
+        // Создаем объект запроса с правильными данными
         CreateTransactionRequest request = new CreateTransactionRequest(
                 new BigDecimal(amount),
                 description,
-                Integer.parseInt(category)
+                LocalDateTime.now().toString(), // Используем String для createdAt
+                null, // Ваша логика, если moneyboxId не используется, оставьте null
+                Integer.parseInt(category) // Теперь передаем categoryId
         );
 
         TransactionApiService apiService = ApiClient.getClient().create(TransactionApiService.class);

@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.afinal.MainActivity;
+import com.example.afinal.boundedContext.userManagement.ui.LoginActivity;
 import com.example.afinal.boundedContext.authentication.api.AuthApiService;
 import com.example.afinal.boundedContext.authentication.request.CreateUserRequest;
 import com.example.afinal.sharedContext.api.ApiClient;
@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                         String message = response.body().string();
                         Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_LONG).show();
 
-                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         intent.putExtra("message", "Registered successfully. Please log in.");
                         startActivity(intent);
                         finish();

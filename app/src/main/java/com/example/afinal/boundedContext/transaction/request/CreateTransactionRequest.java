@@ -6,10 +6,10 @@ public class CreateTransactionRequest {
     private BigDecimal amount;
     private String description;
     private String createdAt;
-    private Integer moneyboxId;
+    private int moneyboxId;
     private int categoryId;
 
-    public CreateTransactionRequest(BigDecimal amount, String description, String createdAt, Integer moneyboxId, int categoryId) {
+    public CreateTransactionRequest(BigDecimal amount, String description, String createdAt, int moneyboxId, int categoryId) {
         this.amount = amount;
         this.description = description;
         this.createdAt = createdAt;
@@ -41,11 +41,11 @@ public class CreateTransactionRequest {
         this.createdAt = createdAt;
     }
 
-    public Integer getMoneyboxId() {
+    public int getMoneyboxId() {
         return moneyboxId;
     }
 
-    public void setMoneyboxId(Integer moneyboxId) {
+    public void setMoneyboxId(int moneyboxId) {
         this.moneyboxId = moneyboxId;
     }
 

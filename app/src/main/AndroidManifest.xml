@@ -19,14 +19,14 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".boundedContext.userManagement.ui.LoginActivity"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".boundedContext.dashboard.DashboardActivity"
+        <activity android:name=".boundedContext.budget.ui.DashboardActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize"/>
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>

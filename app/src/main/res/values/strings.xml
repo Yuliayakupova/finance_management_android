@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">PENNYWISE</string>
+    <string name="app_name">FINAPP</string>
+    <string name="nav_budget">Budget</string>
+    <string name="nav_transaction">Transaction</string>
+    <string name="nav_chat">Chat</string>
+    <string name="nav_moneybox">Moneybox</string>
+    <string name="nav_limit">Limits</string>
 </resources>

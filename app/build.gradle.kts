@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.afinal"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.afinal"
@@ -46,5 +46,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.gson.v286)
+    implementation(libs.mpandroidchart)
+
 
 }
